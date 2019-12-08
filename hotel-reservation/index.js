@@ -1,23 +1,48 @@
 'use strict'
-let start = new Date();
+let start;
 let end;
 let numberRoomProvide;
 let releaseCount;
 let roomExpiredDate = [];
 let i;
+
+/**
+ * Prettify input
+ * @param  {[array]} arrivals     A list for arrival time of booking
+ * @param  {[array]} departures   A list for the departure time of booking
+ * @param  {[integer]} K          A count of rooms availlable
+ * @return null
+ */
+function printInput(arrivals, departures, K) {
+  console.log('Input:');
+  console.log('-------------');
+  console.log('Arrivals: ', arrivals);
+  console.log('Departures: ', departures);
+  console.log('K: ', K);
+  console.log('-------------');
+}
+
 /**
  * Prettify result
  * @param  {[array]} result
  * @return null
  */
 function printResult(result) {
-  console.log(result)
+  console.log('Output:', result);
   // execution time and memory
   end = new Date() - start;
   console.info('Execution time: %dms', end);
   const used = process.memoryUsage().heapUsed / 1024 / 1024;
   console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
 }
+
+/**
+ * Validate input
+ * @param  {[array]} arrivals     A list for arrival time of booking
+ * @param  {[array]} departures   A list for the departure time of booking
+ * @param  {[integer]} K          A count of rooms availlable
+ * @return null
+ */
 let validateInput = function(arrivals, departures, K) {
   if (!Array.isArray(arrivals)) {
     throw `Arrivals must be an array`;
@@ -32,6 +57,14 @@ let validateInput = function(arrivals, departures, K) {
     throw `K must be an integer and more than zero`;
   }
 };
+
+/**
+ * Start reservation arrivals, departures to K rooms
+ * @param  {[array]} arrivals     A list for arrival time of booking
+ * @param  {[array]} departures   A list for the departure time of booking
+ * @param  {[integer]} K          A count of rooms availlable
+ * @return {[boolean]} true or false
+ */
 let reservation = function(arrivals, departures, K) {
   if (arrivals.length === 0) { // all booking accepted
     return true;
@@ -55,13 +88,24 @@ let reservation = function(arrivals, departures, K) {
     return false;
   }
 };
+
+/**
+ * Entry function for reservation
+ * @param  {[array]} arrivals     A list for arrival time of booking
+ * @param  {[array]} departures   A list for the departure time of booking
+ * @param  {[integer]} K          A count of rooms availlable
+ * @return {[boolean]} true or false
+ */
 let hotelReservation = function(arrivals, departures, K) {
+  printInput(arrivals, departures, K);
+  start = new Date(); // start check time
   validateInput(arrivals, departures, K);
   arrivals.sort(function(a, b) { return a - b; });
   departures.sort(function(a, b) { return a - b; });
   // console.log('Total rooms: ', K)
   return reservation(arrivals, departures, K);
 };
+
 printResult(hotelReservation(
   [1, 3, 5], // arrivals
   [2, 6, 10], // departures
