@@ -7,13 +7,15 @@ let end;
  * @param  {[array]} result
  * @return null
  */
-function printResult(result) {
+function printSquare(result, isShowTime) {
   if (Array.isArray(result)) { // check is square data
-    // execution time and memory
-    end = new Date() - start;
-    console.info('Execution time: %dms', end);
-    const used = process.memoryUsage().heapUsed / 1024 / 1024;
-    console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+    if (isShowTime) {
+      // execution time and memory
+      end = new Date() - start;
+      console.info('Execution time: %dms', end);
+      const used = process.memoryUsage().heapUsed / 1024 / 1024;
+      console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+    }
     // start print square data
     let i, j, line;
     for (i = 0; i < result.length; i++) {
@@ -70,6 +72,9 @@ function rotateTime(data, K = 1) {
   if (Array.isArray(data) === false || data.length !== data[0].length) { // check is square data
     return 'error data';
   }
+  console.info('Original Square:');
+  printSquare(data);
+  start = new Date(); // start count time
   K = K % 4;
   for (let i = 0; i < K; i++) {
     data = rotate(data);
@@ -94,4 +99,4 @@ let grid = [
 // [ 0, 128, 16 ]
 // [ 0, 32, 255 ]
 
-printResult(rotateTime(grid, 1));
+printSquare(rotateTime(grid, 1), true);

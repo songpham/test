@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine ./product-recommendation/spec/**/*Spec.js"
+    "test": "cd ./product-recommendation && node spec/support/jasmine-runner.js full"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jasmine": "^3.5.0"
+    "dotenv": "^8.2.0",
+    "jasmine": "^3.5.0",
+    "jasmine-spec-reporter": "^4.2.1",
+    "jasmine-ts-console-reporter": "^3.1.1"
   }
 }
