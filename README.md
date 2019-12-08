@@ -20,6 +20,7 @@ Original Square:
 [ 8, 128, 32 ]
 [ 0, 0, 0 ]
 Execution time: 1ms
+Time/memory complexity: O(n) / O(n)
 The script uses approximately 4.08 MB
 [ 0, 8, 0 ]
 [ 0, 128, 16 ]
@@ -57,6 +58,10 @@ Randomized with seed 22383.
 ```javascript
 node optimal-path/index.js
 ```
+
+> To avoid infinite loop caused by cycles, I check if the loop comeback vertex it has already visited, the loop will be end
+> You can run the test findOptimalPath(['A5', 'B10', 'C3', 'D23', 'E3', 'F9'], ['A->B', 'B->C', 'C->E', 'B->E', 'D->B', 'E->D', 'E->F'], 'D'), to see D comeback to E
+
 **Output:**
 ```
 > Graph:
@@ -91,6 +96,6 @@ K:  1
 -------------
 Output: false
 Execution time: 1ms
+Time/memory complexity: Time O(n log(n)) / O(n)
 The script uses approximately 4.09 MB
-
 ```

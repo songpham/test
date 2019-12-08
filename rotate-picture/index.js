@@ -13,6 +13,7 @@ function printSquare(result, isShowTime) {
       // execution time and memory
       end = new Date() - start;
       console.info('Execution time: %dms', end);
+      console.info('Time/memory complexity: O(n) / O(n)');
       const used = process.memoryUsage().heapUsed / 1024 / 1024;
       console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
     }
