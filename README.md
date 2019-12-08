@@ -57,6 +57,7 @@ Randomized with seed 22383.
 ```javascript
 node optimal-path/index.js
 ```
+**Output:**
 ```
 > Graph:
 A {
@@ -80,6 +81,7 @@ Sum: 5
 ```javascript
 node hotel-reservation/index.js
 ```
+**Output:**
 ```
 Input:
 -------------
